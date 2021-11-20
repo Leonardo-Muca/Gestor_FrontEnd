@@ -11,11 +11,15 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  recuperarusuarios() {
+  recuperarUsuarios() {
     return this.http.get(this.url).toPromise();
   };
 
-  altauser(usuario: any) {
+  altaUser(usuario: any) {
     return this.http.post(this.url, usuario).toPromise();
+  }
+
+  deleteUser(id: any) {
+    return this.http.delete(`${this.url}/${id}`).toPromise();
   }
 }

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   obtenerUsuarios() {
-    this.susuarios.recuperarusuarios().then((res: any) => {
+    this.susuarios.recuperarUsuarios().then((res: any) => {
       let msg: string = '';
       this.usuarios = res;
       console.log(res);
@@ -56,13 +56,15 @@ export class HomeComponent implements OnInit {
   };
 
   altauser(forma: NgForm) {
-    this.susuarios.altauser(this.usuario).then((res: any) => {
+    this.susuarios.altaUser(this.usuario).then((res: any) => {
       Swal.fire({
         title: 'Success',
         text: 'Usuario registrado con exito',
         icon: 'success',
         confirmButtonText: 'Aceptar'
       })
+      console.log(res);
+      
       forma.reset();
       this.ngOnInit();
       this.obtenerUsuarios();
@@ -77,4 +79,26 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  deleteuser(id: number){
+    console.log(id);
+    
+    this.susuarios.deleteUser(id).then((res: any) => {
+      Swal.fire({
+        title: 'Success',
+        text: 'Usuario eliminado con exito',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+      })
+      this.ngOnInit();
+      this.obtenerUsuarios();
+    }).catch(error => {
+      Swal.fire({
+        title: 'Error al eliminar usuario',
+        text: error.error.message,
+        icon: 'error',
+        confirmButtonText: 'Regresar'
+      })
+      console.log(error);
+    });
+  }
 }
