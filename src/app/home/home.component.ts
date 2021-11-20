@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
     this.susuarios.altauser(this.usuario).then((res: any) => {
       Swal.fire({
         title: 'Success',
-        text: 'Uusario registrado con exito',
+        text: 'Usuario registrado con exito',
         icon: 'success',
         confirmButtonText: 'Aceptar'
       })
@@ -69,11 +69,11 @@ export class HomeComponent implements OnInit {
     }).catch(error => {
       Swal.fire({
         title: 'Error al registrar usuario',
-        text: error.mesagge,
+        text: error.error.message,
         icon: 'error',
         confirmButtonText: 'Regresar'
       })
-      console.log(error)
+      console.log(error.error.message);
     });
   }
 
