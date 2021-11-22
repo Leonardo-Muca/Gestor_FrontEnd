@@ -11,13 +11,23 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProyectoComponent } from './proyecto/proyecto.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { NotificacionesComponent } from './notificaciones/notificaciones.component';
+import { TareasComponent } from './tareas/tareas.component';
+import { PasswordPipe } from './pipes/password.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProyectoComponent,
+    UsuarioComponent,
+    NotificacionesComponent,
+    TareasComponent,
+    PasswordPipe
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 export interface Usuario {
+    _id?: number;
     strNombre: string;
     strApellidos: string;
     strCorreo: string;

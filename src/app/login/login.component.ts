@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     if (this.email === 'leonardo' && this.password === '12345') {
       Swal.fire({
         title: 'Credenciales correctas',
+        text: `Welcome ${this.email}`,
         icon: 'success',
         confirmButtonText: 'Aceptar'
       })

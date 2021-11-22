@@ -19,6 +19,10 @@ export class UsuarioService {
     return this.http.post(this.url, usuario).toPromise();
   }
 
+  putUser(id: any, usuario: any) {
+    return this.http.put(`${this.url}/${id}`, usuario).toPromise();
+  }
+
   deleteUser(id: any) {
     return this.http.delete(`${this.url}/${id}`).toPromise();
   }
