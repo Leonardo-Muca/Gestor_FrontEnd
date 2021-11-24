@@ -16,6 +16,24 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { TareasComponent } from './tareas/tareas.component';
 import { PasswordPipe } from './pipes/password.pipe';
+import { RouterModule,Routes } from '@angular/router';
+import { ErrorComponent } from './error/error.component';
+
+
+
+const routes: Routes = [
+  
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'usuarios', component: UsuarioComponent },
+  { path: 'notificaciones', component: NotificacionesComponent },
+  { path: 'proyectos', component: ProyectoComponent },
+  { path: 'tareas', component: TareasComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent},
+  { path: '**', component: ErrorComponent},
+
+];
 
 @NgModule({
   declarations: [
@@ -27,7 +45,8 @@ import { PasswordPipe } from './pipes/password.pipe';
     UsuarioComponent,
     NotificacionesComponent,
     TareasComponent,
-    PasswordPipe
+    PasswordPipe,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +54,7 @@ import { PasswordPipe } from './pipes/password.pipe';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

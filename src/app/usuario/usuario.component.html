@@ -1,35 +1,39 @@
 <app-navbar></app-navbar>
 <div style="display: flex; flex: 100; padding-top: 5%;">
     <div style="width: 35%; margin-left: 20px;">
-        <form autocomplete="off" #forma="ngForm">
+        <form autocomplete="off" (ngSubmit)="altauser(forma)" #forma="ngForm">
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" >
+                    <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="usuario.strNombre"
+                        name="strNombre" #strNombre="ngModel">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Apellidos</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" >
+                    <input type="text" class="form-control" id="inputPassword3" [(ngModel)]="usuario.strApellidos"
+                        name="strApellidos" #strApellidos="ngModel">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Correo</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" >
+                    <input type="email" class="form-control" id="inputEmail3" [(ngModel)]="usuario.strCorreo"
+                        name="strCorreo" #strCorreo="ngModel">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" >
+                    <input type="password" class="form-control" id="inputPassword3" [(ngModel)]="usuario.strPassword"
+                        name="strPassword" #strPassword="ngModel">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Tipo de usuario</label>
-                <select class="form-select" id="inputGroupSelect01"
-                    name="strTipoUsuario" >
+                <select class="form-select" id="inputGroupSelect01" [(ngModel)]="usuario.strTipoUsuario"
+                    name="strTipoUsuario" #strTipoUsuario="ngModel">
                     <option value="Administrador">Administrador</option>
                     <option value="Desarrollador">Desarrollador</option>
                     <option value="Testeer">Testeer</option>
@@ -55,9 +59,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr >
-                    <td><button type="submit" class="btn btn-warning" >Editar</button></td>
-                    <td> <button type="submit" class="btn btn-danger" >Eliminar</button></td>
+                <tr *ngFor="let usuario of usuarios">
+                    <td>{{usuario.strNombre}}</td>
+                    <td>{{usuario.strApellidos}}</td>
+                    <td>{{usuario.strCorreo}}</td>
+                    <td>{{usuario.strPassword | password}}</td>
+                    <td>{{usuario.strTipoUsuario}}</td>
+                    <td><button type="submit" class="btn btn-warning" (click)="seleccionar(usuario)">Editar</button></td>
+                    <td> <button type="submit" class="btn btn-danger" (click)="deleteuser(usuario._id)">Eliminar</button></td>
                 </tr>
             </tbody>
         </table>

@@ -1,33 +1,29 @@
 <app-navbar></app-navbar>
 <div style="display: flex; flex: 100; padding-top: 5%;">
     <div style="width: 35%; margin-left: 20px;">
-        <form autocomplete="off" (ngSubmit)="altauser(forma)" #forma="ngForm">
+        <form autocomplete="off" #forma="ngForm">
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="usuario.strNombre"
-                        name="strNombre" #strNombre="ngModel">
+                    <input type="text" class="form-control" id="inputEmail3" >
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Apellidos</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" [(ngModel)]="usuario.strApellidos"
-                        name="strApellidos" #strApellidos="ngModel">
+                    <input type="text" class="form-control" id="inputPassword3" >
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Correo</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" [(ngModel)]="usuario.strCorreo"
-                        name="strCorreo" #strCorreo="ngModel">
+                    <input type="email" class="form-control" id="inputEmail3" >
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" [(ngModel)]="usuario.strPassword"
-                        name="strPassword" #strPassword="ngModel">
+                    <input type="password" class="form-control" id="inputPassword3" >
                 </div>
             </div>
             <div class="form-group row">
