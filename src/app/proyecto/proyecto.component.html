@@ -1,16 +1,18 @@
 <app-navbar></app-navbar>
 <div style="display: flex; flex: 100; padding-top: 5%;">
     <div style="width: 30%; margin-left: 2%;">
-        <form autocomplete="off" #forma="ngForm">
+        <form autocomplete="off" (ngSubmit)="altaProyecto(forma)" #forma="ngForm">
             <div class="form-group row mb-2" >
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" >
+                    <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="proyecto.strNombreProyecto"
+                        name="strNombreProyecto" #strNombreProyecto="ngModel">
                 </div>
             </div>
             <div class="form-group col mb-2" >
                 <label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
-                <select class="custom-select col-sm-10" id="Status" >
+                <select class="custom-select col-sm-10" id="Status" [(ngModel)]="proyecto.strStatus"
+                name="strStatus" #strStatus="ngModel">
                     <option selected>Seleccione Status</option>
                     <option value="En progreso">En progreso</option>
                     <option value="Terminado">Terminado</option>
@@ -21,19 +23,22 @@
             <div class="form-group row mb-2">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Descrición</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="text-desc" >
+                    <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="proyecto.strDescripcion"
+                    name="strDescripcion" #strDescripcion="ngModel">
                 </div>
             </div>
             <div class="form-group row mb-2">
                 <label for="inputFechaI" class="col-sm-2 col-form-label">Fecha de inicio</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fechaInicio" >
+                    <input type="date" class="form-control" id="dteFechaInicio" [(ngModel)]="proyecto.dteFechaInicio"
+                    name="dteFechaInicio" #dteFechaInicio="ngModel">
                 </div>
             </div>
             <div class="form-group row mb-2">
                 <label for="inputFechaE" class="col-sm-2 col-form-label">Fecha de entrega</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fechaEnrega" >
+                    <input type="date" class="form-control" id="dteFechaEntrega" [(ngModel)]="proyecto.dteFechaEntrega"
+                    name="dteFechaEntrega" #dteFechaEntrega="ngModel">
                 </div>
             </div>
             
@@ -57,14 +62,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr >
-                    <td>Project Arquitectura</td>
-                    <td> En progreso</td>
-                    <td>Realizar modelos de arquitectura</td>
-                    <td>12-noviembre-2021</td>
-                    <td>28-noviembre-2021</td>
-                    <td><button type="submit" class="btn btn-warning" >Editar</button></td>
-                    <td> <button type="submit" class="btn btn-danger" >Eliminar</button></td>
+                <tr *ngFor="let proyecto of proyectos">
+                    <td>{{proyecto.strNombreProyecto}}</td>
+                    <td>{{proyecto.strStatus}}</td>
+                    <td>{{proyecto.strDescripcion}}</td>
+                    <td>{{proyecto.dteFechaInicio}}</td>
+                    <td>{{proyecto.dteFechaEntrega}}</td>
+                    <td><button type="submit" class="btn btn-warning" (click)="seleccionar(proyecto)">Editar</button></td>
+                    <td> <button type="submit" class="btn btn-danger" (click)="deleteProyecto(proyecto._id)">Eliminar</button></td>
                 </tr>
             </tbody>
         </table>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { Usuario } from '../interfaces/usuario';
 import { UsuarioService } from '../service/usuarioService/usuario.service';
 
@@ -11,7 +11,7 @@ import { UsuarioService } from '../service/usuarioService/usuario.service';
 })
 export class UsuarioComponent implements OnInit {
 
-  usuarios: Usuario[] = []
+  usuarios: Usuario[] = [];
 
   usuario = {
     _id: null,
@@ -22,39 +22,11 @@ export class UsuarioComponent implements OnInit {
     strTipoUsuario: null,
   };
 
-  constructor(private susuarios: UsuarioService) { }
+  constructor(public susuarios: UsuarioService) { }
 
   ngOnInit(): void {
-    this.obtenerUsuarios();
+    this.susuarios.recuperarUsuarios();
   }
-
-  obtenerUsuarios() {
-    this.susuarios.recuperarUsuarios().then((res: any) => {
-      let msg: string = '';
-      this.usuarios = res;
-      console.log(res);
-
-      if (res.length > 0) {
-        msg = 'Se han obtenido los usuarios con exito';
-      } else {
-        msg = 'No hay usuarios existentes';
-      }
-      Swal.fire({
-        title: 'Success',
-        text: msg,
-        icon: 'success',
-        confirmButtonText: 'Regresar'
-      })
-    }).catch(error => {
-      Swal.fire({
-        title: 'Error al obtener usuarios',
-        text: error,
-        icon: 'error',
-        confirmButtonText: 'Regresar'
-      })
-      console.log('Ha sucedido un error', error);
-    });
-  };
 
   altauser(forma: NgForm) {
     if (this.usuario._id == undefined) {
@@ -104,7 +76,6 @@ export class UsuarioComponent implements OnInit {
         confirmButtonText: 'Aceptar'
       })
       this.ngOnInit();
-      this.obtenerUsuarios();
     }).catch(error => {
       Swal.fire({
         title: 'Error al eliminar usuario',

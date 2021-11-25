@@ -1,54 +1,80 @@
 <app-navbar></app-navbar>
 <div style="display: flex; flex: 100; padding-top: 5%;">
     <div style="width:29%; margin-left: 2%;">
-        <form autocomplete="off" #forma="ngForm">
-            <div class="form-group row mb-2" >
+        <form autocomplete="off" (ngSubmit)="altaTarea(forma)" #forma="ngForm">
+            <div class="form-group row mb-2">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" >
+                    <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="tarea.strNombre"
+                        name="strNombre" #strNombre="ngModel">
                 </div>
             </div>
-            <div class="form-group col mb-2" >
+            <div class="form-group col mb-2">
                 <label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
-                <select class="custom-select col-sm-10" id="Status" >
+                <select class="form-select" id="inputGroupSelect01" [(ngModel)]="tarea.strStatus" name="strStatus"
+                    #strStatus="ngModel">
                     <option selected>Seleccione Status</option>
                     <option value="En progreso">En progreso</option>
                     <option value="Terminado">Terminado</option>
                     <option value="Rechazado">Rechazado</option>
-                  </select>
+                </select>
             </div>
-           
+
             <div class="form-group row mb-2">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Descrición</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="text-desc" >
+                    <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="tarea.strDescripcion"
+                        name="strDescripcion" #strDescripcion="ngModel">
                 </div>
             </div>
             <div class="form-group row mb-2">
                 <label for="inputFechaI" class="col-sm-2 col-form-label">Fecha inicio</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fechaInicio" >
+                    <input type="date" class="form-control" id="dteFechaInicio" [(ngModel)]="tarea.dteFechaInicio"
+                        name="dteFechaInicio" #dteFechaInicio="ngModel">
                 </div>
             </div>
             <div class="form-group row mb-2">
                 <label for="inputFechaE" class="col-sm-2 col-form-label">Fecha entrega</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fechaEnrega" >
+                    <input type="date" class="form-control" id="dteFechaEntrega" [(ngModel)]="tarea.dteFechaEntrega"
+                        name="dteFechaEntrega" #dteFechaEntrega="ngModel">
                 </div>
             </div>
-            <div class="form-group row mb-2" >
+            <div class="form-group row mb-2">
+                <label for="inputDeveloper" class="col-sm-2 col-form-label">Administrador</label>
+                <div class="col-sm-10">
+                    <select name="_id" [(ngModel)]="tarea.arrAdministrador" class="form-select form-select-lg mb-3"
+                        aria-label=".form-select-lg example" name="arrAdministrador" #arrAdministrador="ngModel">
+                        <option *ngFor="let usuario of susuarios.usuarios" [ngValue]="usuario._id">
+                            {{usuario.strNombre}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
                 <label for="inputDeveloper" class="col-sm-2 col-form-label">ID Developer</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputDeveloper" >
+                    <select name="_id" [(ngModel)]="tarea.arrDesarrollador" class="form-select form-select-lg mb-3"
+                        aria-label=".form-select-lg example" name="arrDesarrollador" #arrDesarrollador="ngModel">
+                        <option *ngFor="let usuario of susuarios.usuarios" [ngValue]="usuario._id">
+                            {{usuario.strNombre}}
+                        </option>
+                    </select>
                 </div>
             </div>
-            <div class="form-group row mb-2" >
+            <div class="form-group row mb-2">
                 <label for="inputTester" class="col-sm-2 col-form-label">ID Tester</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputTester" >
+                    <select name="_id" [(ngModel)]="tarea.arrTester" class="form-select form-select-lg mb-3"
+                        aria-label=".form-select-lg example" name="arrTester" #arrTester="ngModel">
+                        <option *ngFor="let usuario of susuarios.usuarios" [ngValue]="usuario._id">
+                            {{usuario.strNombre}}
+                        </option>
+                    </select>
                 </div>
             </div>
-            
+
             <div class="form-group row mb-2">
                 <div class="col-sm-10" style="padding-top: 2%;">
                     <button type="submit" class="btn btn-primary">Enviar</button>
@@ -65,18 +91,37 @@
                     <th scope="col">Descripción </th>
                     <th scope="col">Fecha de inicio</th>
                     <th scope="col">Fecha de entrega</th>
+                    <th scope="col">Administrador</th>
+                    <th scope="col">Desarrollador</th>
+                    <th scope="col">Tester</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr >
-                    <td>Project Arquitectura</td>
-                    <td> En progreso</td>
-                    <td>Realizar modelos de arquitectura</td>
-                    <td>12-noviembre-2021</td>
-                    <td>28-noviembre-2021</td>
-                    <td><button type="submit" class="btn btn-warning" >Editar</button></td>
-                    <td> <button type="submit" class="btn btn-danger" >Eliminar</button></td>
+                <tr *ngFor="let tarea of tareas">
+                    <td>{{tarea.strNombre}}</td>
+                    <td>{{tarea.strStatus}}</td>
+                    <td>{{tarea.strDescripcion}}</td>
+                    <td>{{tarea.dteFechaInicio}}</td>
+                    <td>{{tarea.dteFechaEntrega}}</td>
+                    <td>
+                        <div *ngFor="let usuario of tarea.arrAdministrador">
+                            {{usuario}}
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngFor="let usuario of tarea.arrDesarrollador">
+                            {{usuario}}
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngFor="let usuario of tarea.arrTester">
+                            {{usuario}}
+                        </div>
+                    </td>
+                    <td><button type="submit" class="btn btn-warning" (click)="seleccionar(tarea)">Editar</button></td>
+                    <td> <button type="submit" class="btn btn-danger" (click)="deleteTarea(tarea._id)">Eliminar</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

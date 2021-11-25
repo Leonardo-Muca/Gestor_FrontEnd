@@ -1,4 +1,5 @@
-export interface Usuario {
+export interface Tarea {
+    _id?: number;
     idProyecto: number;
     strNombre: string;
     strStatus: string;

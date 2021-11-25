@@ -1,4 +1,5 @@
-export interface Usuario {
+export interface Proyecto {
+    _id?:number
     strNombreProyecto: string;
     strStatus: string;
     strDescripcion: string;
