@@ -1,61 +1,80 @@
 <app-navbar></app-navbar>
 <div style="display: flex; flex: 100; padding-top: 5%;">
-    <div style="width: 35%; margin-left: 20px;">
+    <div style="width:29%; margin-left: 2%;">
         <form autocomplete="off" #forma="ngForm">
-            <div class="form-group row">
+            <div class="form-group row mb-2" >
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputEmail3" >
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="inputPassword3" class="col-sm-2 col-form-label">Apellidos</label>
+            <div class="form-group col mb-2" >
+                <label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
+                <select class="custom-select col-sm-10" id="Status" >
+                    <option selected>Seleccione Status</option>
+                    <option value="En progreso">En progreso</option>
+                    <option value="Terminado">Terminado</option>
+                    <option value="Rechazado">Rechazado</option>
+                  </select>
+            </div>
+           
+            <div class="form-group row mb-2">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Descrición</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" >
+                    <input type="text" class="form-control" id="text-desc" >
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Correo</label>
+            <div class="form-group row mb-2">
+                <label for="inputFechaI" class="col-sm-2 col-form-label">Fecha inicio</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" >
+                    <input type="date" class="form-control" id="fechaInicio" >
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
+            <div class="form-group row mb-2">
+                <label for="inputFechaE" class="col-sm-2 col-form-label">Fecha entrega</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" >
+                    <input type="date" class="form-control" id="fechaEnrega" >
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Tipo de usuario</label>
-                <select class="form-select" id="inputGroupSelect01"
-                    name="strTipoUsuario" >
-                    <option value="Administrador">Administrador</option>
-                    <option value="Desarrollador">Desarrollador</option>
-                    <option value="Testeer">Testeer</option>
-                </select>
+            <div class="form-group row mb-2" >
+                <label for="inputDeveloper" class="col-sm-2 col-form-label">ID Developer</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputDeveloper" >
+                </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row mb-2" >
+                <label for="inputTester" class="col-sm-2 col-form-label">ID Tester</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputTester" >
+                </div>
+            </div>
+            
+            <div class="form-group row mb-2">
                 <div class="col-sm-10" style="padding-top: 2%;">
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
         </form>
     </div>
-    <div style="margin-left: 40px;">
-        <table class="table">
+    <div style="margin-left: 3%;" class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Contraseña</th>
-                    <th scope="col">Tipo de Cuenta</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Descripción </th>
+                    <th scope="col">Fecha de inicio</th>
+                    <th scope="col">Fecha de entrega</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr >
+                    <td>Project Arquitectura</td>
+                    <td> En progreso</td>
+                    <td>Realizar modelos de arquitectura</td>
+                    <td>12-noviembre-2021</td>
+                    <td>28-noviembre-2021</td>
                     <td><button type="submit" class="btn btn-warning" >Editar</button></td>
                     <td> <button type="submit" class="btn btn-danger" >Eliminar</button></td>
                 </tr>

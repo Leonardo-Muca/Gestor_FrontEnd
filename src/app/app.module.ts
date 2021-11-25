@@ -21,6 +21,7 @@ import { ErrorComponent } from './error/error.component';
 
 
 
+
 const routes: Routes = [
   
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -30,7 +31,6 @@ const routes: Routes = [
   { path: 'proyectos', component: ProyectoComponent },
   { path: 'tareas', component: TareasComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', component: LoginComponent},
   { path: '**', component: ErrorComponent},
 
 ];
@@ -46,7 +46,8 @@ const routes: Routes = [
     NotificacionesComponent,
     TareasComponent,
     PasswordPipe,
-    ErrorComponent
+    ErrorComponent,
+    
   ],
   imports: [
     BrowserModule,
