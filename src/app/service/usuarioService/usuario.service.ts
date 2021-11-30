@@ -15,19 +15,7 @@ export class UsuarioService {
 
   recuperarUsuarios() {
     return this.http.get(this.url).subscribe((res: any)=>{
-      let msg: string = '';
       this.usuarios = res;
-      if (res.length > 0) {
-        msg = 'Se han obtenido los usuarios con exito';
-      } else {
-        msg = 'No hay usuarios existentes';
-      }
-      Swal.fire({
-        title: 'Success',
-        text: msg,
-        icon: 'success',
-        confirmButtonText: 'Regresar'
-      })
     }, error => {
       Swal.fire({
         title: 'Error al obtener usuarios',

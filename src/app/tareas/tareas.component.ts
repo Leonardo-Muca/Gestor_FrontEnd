@@ -36,19 +36,7 @@ export class TareasComponent implements OnInit {
 
   obtenerTareas() {
     this.stareas.recuperarTareas().then((res: any) => {
-      let msg: string = '';
       this.tareas = res;
-      if (res.length > 0) {
-        msg = 'Se han obtenido los Tareas con exito';
-      } else {
-        msg = 'No hay Tareas existentes';
-      }
-      Swal.fire({
-        title: 'Success',
-        text: msg,
-        icon: 'success',
-        confirmButtonText: 'Regresar'
-      })
     }).catch(error => {
       Swal.fire({
         title: 'Error al obtener Tareas',

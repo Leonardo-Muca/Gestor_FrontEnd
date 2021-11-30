@@ -30,21 +30,7 @@ proyecto = {
 
   obtenerProyectos() {
     this.sproyectos.recuperarProyectos().then((res: any) => {
-      let msg: string = '';
       this.proyectos = res;
-      console.log(res);
-
-      if (res.length > 0) {
-        msg = 'Se han obtenido los Proyectos con exito';
-      } else {
-        msg = 'No hay Proyectos existentes';
-      }
-      Swal.fire({
-        title: 'Success',
-        text: msg,
-        icon: 'success',
-        confirmButtonText: 'Regresar'
-      })
     }).catch(error => {
       Swal.fire({
         title: 'Error al obtener Proyectos',
