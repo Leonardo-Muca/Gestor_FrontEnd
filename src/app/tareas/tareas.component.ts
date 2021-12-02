@@ -22,9 +22,9 @@ export class TareasComponent implements OnInit {
     strDescripcion: null,
     dteFechaInicio: null,
     dteFechaEntrega: null,
-    arrAdministrador: null,
-    arrDesarrollador: null,
-    arrTester: null,
+    arrAdministrador: { idUsuario: null },
+    arrDesarrollador: { idUsuario: null },
+    arrTester: { idUsuario: null },
   };
 
   constructor(private stareas: TareaService, public susuarios: UsuarioService) { }
@@ -37,6 +37,8 @@ export class TareasComponent implements OnInit {
   obtenerTareas() {
     this.stareas.recuperarTareas().then((res: any) => {
       this.tareas = res;
+      console.log(res);
+      
     }).catch(error => {
       Swal.fire({
         title: 'Error al obtener Tareas',

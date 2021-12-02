@@ -44,7 +44,7 @@
             <div class="form-group row mb-2">
                 <label for="inputDeveloper" class="col-sm-2 col-form-label">Administrador</label>
                 <div class="col-sm-10">
-                    <select name="_id" [(ngModel)]="tarea.arrAdministrador" class="form-select form-select-lg mb-3"
+                    <select name="_id" [(ngModel)]="tarea.arrAdministrador.idUsuario" class="form-select form-select-lg mb-3"
                         aria-label=".form-select-lg example" name="arrAdministrador" #arrAdministrador="ngModel">
                         <option *ngFor="let usuario of susuarios.usuarios" [ngValue]="usuario._id">
                             {{usuario.strNombre}}
@@ -55,7 +55,7 @@
             <div class="form-group row mb-2">
                 <label for="inputDeveloper" class="col-sm-2 col-form-label">ID Developer</label>
                 <div class="col-sm-10">
-                    <select name="_id" [(ngModel)]="tarea.arrDesarrollador" class="form-select form-select-lg mb-3"
+                    <select name="_id" [(ngModel)]="tarea.arrDesarrollador.idUsuario" class="form-select form-select-lg mb-3"
                         aria-label=".form-select-lg example" name="arrDesarrollador" #arrDesarrollador="ngModel">
                         <option *ngFor="let usuario of susuarios.usuarios" [ngValue]="usuario._id">
                             {{usuario.strNombre}}
@@ -66,7 +66,7 @@
             <div class="form-group row mb-2">
                 <label for="inputTester" class="col-sm-2 col-form-label">ID Tester</label>
                 <div class="col-sm-10">
-                    <select name="_id" [(ngModel)]="tarea.arrTester" class="form-select form-select-lg mb-3"
+                    <select name="_id" [(ngModel)]="tarea.arrTester.idUsuario" class="form-select form-select-lg mb-3"
                         aria-label=".form-select-lg example" name="arrTester" #arrTester="ngModel">
                         <option *ngFor="let usuario of susuarios.usuarios" [ngValue]="usuario._id">
                             {{usuario.strNombre}}
@@ -106,17 +106,17 @@
                     <td>{{tarea.dteFechaEntrega}}</td>
                     <td>
                         <div *ngFor="let usuario of tarea.arrAdministrador">
-                            {{usuario}}
+                            {{usuario.idUsuario.strNombre}}
                         </div>
                     </td>
                     <td>
                         <div *ngFor="let usuario of tarea.arrDesarrollador">
-                            {{usuario}}
+                            {{usuario.idUsuario.strNombre}}
                         </div>
                     </td>
                     <td>
                         <div *ngFor="let usuario of tarea.arrTester">
-                            {{usuario}}
+                            {{usuario.idUsuario.strNombre}}
                         </div>
                     </td>
                     <td><button type="submit" class="btn btn-warning" (click)="seleccionar(tarea)">Editar</button></td>

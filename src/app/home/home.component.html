@@ -23,55 +23,49 @@
     <table class="table table-striped table-bordered table-hover">
       <thead>
         <tr>
-          <th scope="col">Nombre de la tarea</th>
+          <th scope="col">Nombre</th>
           <th scope="col">Status</th>
-          <th scope="col">Descripción</th>
+          <th scope="col">Descripción </th>
           <th scope="col">Fecha de entrega</th>
-          <th scope="col">Rol</th>
+          <th scope="col">Encargado</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Nombre de la tarea</td>
-          <td>En progreso</td>
-          <td>Primer avance de proyecto</td>
-          <td>02-diciembre-2021</td>
-          <td>Desarrollador</td>
+        <tr *ngFor="let tarea of tareasEnProgreso">
+          <td>{{tarea.strNombre}}</td>
+          <td>{{tarea.strStatus}}</td>
+          <td>{{tarea.strDescripcion}}</td>
+          <td>{{tarea.dteFechaEntrega}}</td>
+          <td>
+            <div *ngFor="let usuario of tarea.arrAdministrador">
+                {{usuario.idUsuario.strNombre}}
+            </div>
+        </td>
         </tr>
-        <tr>
-            <td>Nombre de la tarea</td>
-            <td>En progreso</td>
-            <td>Primer avance de proyecto</td>
-            <td>02-diciembre-2021</td>
-            <td>Desarrollador</td>
-          </tr>
       </tbody>
     </table>
     <h3>Tareas finalizadas</h3>
     <table class="table table-striped table-bordered table-hover">
       <thead>
         <tr>
-          <th scope="col">Nombre de la tarea</th>
+          <th scope="col">Nombre</th>
           <th scope="col">Status</th>
-          <th scope="col">Descripción</th>
+          <th scope="col">Descripción </th>
           <th scope="col">Fecha de entrega</th>
-          <th scope="col">Rol</th>
+          <th scope="col">Encargado</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Nombre de la tarea</td>
-          <td>Finalizada</td>
-          <td>Mockups</td>
-          <td>20-noviembre-2021</td>
-          <td>Desarrollador</td>
-        </tr>
-        <tr>
-          <td>Nombre de la tarea</td>
-          <td>Finalizada</td>
-          <td>Mockups</td>
-          <td>20-noviembre-2021</td>
-          <td>Desarrollador</td>
+        <tr *ngFor="let tarea of tareasFinalizadas">
+          <td>{{tarea.strNombre}}</td>
+          <td>{{tarea.strStatus}}</td>
+          <td>{{tarea.strDescripcion}}</td>
+          <td>{{tarea.dteFechaEntrega}}</td>
+          <td>
+            <div *ngFor="let usuario of tarea.arrAdministrador">
+                {{usuario.idUsuario.strNombre}}
+            </div>
+        </td>
         </tr>
       </tbody>
     </table>

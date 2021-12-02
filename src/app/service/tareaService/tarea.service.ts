@@ -8,6 +8,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class TareaService {
 
   url = environment.url + '/tareas';
+  url2 = environment.url + '/tareaspendientes';
+  url3 = environment.url + '/tareasfinalizadas';
 
   constructor(private http: HttpClient) { }
 
@@ -26,4 +28,12 @@ export class TareaService {
   deleteTarea(id: any) {
     return this.http.delete(`${this.url}/${id}`).toPromise();
   };
+
+  recuperarTareasPendientes() {
+    return this.http.get(this.url2).toPromise();
+  };
+
+  recuperarTareasFinalizadas() {
+    return this.http.get(this.url3).toPromise();
+  };  
 };
