@@ -3,47 +3,47 @@
     <div style="width: 30%; margin-left: 2%;">
         <form autocomplete="off" (ngSubmit)="altaProyecto(forma)" #forma="ngForm">
             <div class="form-group row mb-2" >
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
-                <div class="col-sm-10">
+                
+                <div class="form-floating mb-2">
                     <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="proyecto.strNombreProyecto"
-                        name="strNombreProyecto" #strNombreProyecto="ngModel">
+                        name="strNombreProyecto" #strNombreProyecto="ngModel" placeholder="Nombre" required>
+                <label for="inputEmail3" style="margin-left: 2%;">Nombre</label>       
                 </div>
             </div>
-            <div class="form-group col mb-2" >
-                <label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
-                <select class="custom-select col-sm-10" id="Status" [(ngModel)]="proyecto.strStatus"
+            <div class="form-floating mb-2" >
+                <select class="form-select" id="Status" [(ngModel)]="proyecto.strStatus"
                 name="strStatus" #strStatus="ngModel">
-                    <option selected>Seleccione Status</option>
                     <option value="En progreso">En progreso</option>
                     <option value="Terminado">Terminado</option>
                     <option value="Rechazado">Rechazado</option>
                   </select>
+                  <label for="inputStatus">Status</label>
             </div>
            
             <div class="form-group row mb-2">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Descrición</label>
-                <div class="col-sm-10">
+                <div class="form-floating mb-2">
                     <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="proyecto.strDescripcion"
-                    name="strDescripcion" #strDescripcion="ngModel">
+                    name="strDescripcion" #strDescripcion="ngModel" placeholder="Descripción" required>
+                <label for="inputEmail3" style="margin-left: 2%;">Descripción</label>
                 </div>
             </div>
             <div class="form-group row mb-2">
-                <label for="inputFechaI" class="col-sm-2 col-form-label">Fecha de inicio</label>
-                <div class="col-sm-10">
+                <div class="form-floating mb-2">
                     <input type="date" class="form-control" id="dteFechaInicio" [(ngModel)]="proyecto.dteFechaInicio"
                     name="dteFechaInicio" #dteFechaInicio="ngModel">
+                    <label for="inputFechaI">Fecha de inicio</label>
                 </div>
             </div>
             <div class="form-group row mb-2">
-                <label for="inputFechaE" class="col-sm-2 col-form-label">Fecha de entrega</label>
-                <div class="col-sm-10">
+                <div class="form-floating mb-2">
                     <input type="date" class="form-control" id="dteFechaEntrega" [(ngModel)]="proyecto.dteFechaEntrega"
                     name="dteFechaEntrega" #dteFechaEntrega="ngModel">
+                    <label for="inputFechaE">Fecha de entrega</label>
                 </div>
             </div>
             
             <div class="form-group row mb-2">
-                <div class="col-sm-10" style="padding-top: 2%;">
+                <div class="d-grid gap-2" style="padding-top: 2%;">
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
