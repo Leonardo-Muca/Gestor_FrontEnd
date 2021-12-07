@@ -82,7 +82,9 @@ export class TareasComponent implements OnInit {
           title: 'Error al modificar Tarea',
           text: error.error.message,
           icon: 'error',
-          confirmButtonText: 'Regresar'
+          confirmButtonText: 'Regresar',
+          
+          
         });
       });
     }

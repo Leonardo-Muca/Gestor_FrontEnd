@@ -1,82 +1,139 @@
 <app-navbar></app-navbar>
-<div style="padding-top: 5%">
-    <div class="row g-2" style="margin-left: 2%">
-        <form autocomplete="off" (ngSubmit)="altauser(forma)" #forma="ngForm" class="form-group row card-block">
-            <div class="col-4 col-md-4">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="usuario.strNombre"
-                        name="strNombre" #strNombre="ngModel" placeholder="Nombre" required />
-                    <label for="inputEmail3">Nombre</label>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="inputPassword3" [(ngModel)]="usuario.strApellidos"
-                        name="strApellidos" #strApellidos="ngModel" placeholder="Apellido" required />
-                    <label for="inputPassword3">Apellidos</label>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="inputEmail3" [(ngModel)]="usuario.strCorreo"
-                        name="strCorreo" #strCorreo="ngModel" placeholder="Correo" required />
-                    <label for="inputEmail3">Correo</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-            <div class="form-floating mb-2">
-                <input type="password" class="form-control" id="inputPassword3" [(ngModel)]="usuario.strPassword"
-                    name="strPassword" #strPassword="ngModel" placeholder="Contraseña" required />
-                <label for="inputPassword3">Contraseña</label>
-            </div>
-            </div>
-            <div class="col-md-6">
-            <div class="form-floating mb-2">
-                <select class="form-select" id="inputGroupSelect01" [(ngModel)]="usuario.strTipoUsuario"
-                    name="strTipoUsuario" #strTipoUsuario="ngModel" required>
-                    <option value="Administrador">Administrador</option>
-                    <option value="Desarrollador">Desarrollador</option>
-                    <option value="Testeer">Testeer</option>
-                </select>
-                <label for="inputEmail3">Tipo de usuario</label>
-            </div>
-            </div>
-            <div class="d-grid gap-2" style="padding-top: 3%; margin-bottom: 2%;">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-        </form>
+<div class="fondo">
+  <h1 style="text-align: center; margin-bottom: -2%">Usuario</h1>
+  <div style="padding-top: 5%">
+    <div class="row g-2" style="margin-left: 2%; margin-right: 2%">
+      <form
+        autocomplete="off"
+        (ngSubmit)="altauser(forma)"
+        #forma="ngForm"
+        class="form-group row card-block"
+      >
+        <div class="col-md-4">
+          <div class="form-floating mb-2" style="margin-top: 3%">
+            <input
+              type="text"
+              class="form-control"
+              id="inputEmail3"
+              [(ngModel)]="usuario.strNombre"
+              name="strNombre"
+              #strNombre="ngModel"
+              placeholder="Nombre"
+              required
+            />
+            <label for="inputEmail3">Nombre</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating mb-2" style="margin-top: 3%">
+            <input
+              type="text"
+              class="form-control"
+              id="inputPassword3"
+              [(ngModel)]="usuario.strApellidos"
+              name="strApellidos"
+              #strApellidos="ngModel"
+              placeholder="Apellido"
+              required
+            />
+            <label for="inputPassword3">Apellidos</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating mb-3" style="margin-top: 3%">
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail3"
+              [(ngModel)]="usuario.strCorreo"
+              name="strCorreo"
+              #strCorreo="ngModel"
+              placeholder="Correo"
+              required
+            />
+            <label for="inputEmail3">Correo</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating mb-2">
+            <input
+              type="password"
+              class="form-control"
+              id="inputPassword3"
+              [(ngModel)]="usuario.strPassword"
+              name="strPassword"
+              #strPassword="ngModel"
+              placeholder="Contraseña"
+              required
+            />
+            <label for="inputPassword3">Contraseña</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating mb-2">
+            <select
+              class="form-select"
+              id="inputGroupSelect01"
+              [(ngModel)]="usuario.strTipoUsuario"
+              name="strTipoUsuario"
+              #strTipoUsuario="ngModel"
+              required
+            >
+              <option value="Administrador">Administrador</option>
+              <option value="Desarrollador">Desarrollador</option>
+              <option value="Testeer">Testeer</option>
+            </select>
+            <label for="inputEmail3">Tipo de usuario</label>
+          </div>
+        </div>
+        <div
+          class="d-grid gap-2 d-md-flex justify-content-md-end mb-3"
+          style="margin-top: 1%"
+        >
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
     </div>
-    <div style="margin-left: 2%; margin-right: 2%; margin-top: 2%">
-        <table class="table table-striped table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Contraseña</th>
-                    <th scope="col">Tipo de Cuenta</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let usuario of susuarios.usuarios">
-                    <td>{{ usuario.strNombre }}</td>
-                    <td>{{ usuario.strApellidos }}</td>
-                    <td>{{ usuario.strCorreo }}</td>
-                    <td>{{ usuario.strPassword | password }}</td>
-                    <td>{{ usuario.strTipoUsuario }}</td>
-                    <td>
-                        <button type="submit" class="btn btn-warning" (click)="seleccionar(usuario)">
-                            Editar
-                        </button>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-danger" (click)="deleteuser(usuario._id)">
-                            Eliminar
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div style="margin-left: 2%; margin-right: 3%; margin-top: 2%">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Tipo de Cuenta</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of susuarios.usuarios">
+            <td>{{ usuario.strNombre }}</td>
+            <td>{{ usuario.strApellidos }}</td>
+            <td>{{ usuario.strCorreo }}</td>
+            <td>{{ usuario.strPassword | password }}</td>
+            <td>{{ usuario.strTipoUsuario }}</td>
+            <td>
+              <button
+                type="submit"
+                class="btn btn-warning"
+                (click)="seleccionar(usuario)"
+              >
+                Editar
+              </button>
+            </td>
+            <td>
+              <button
+                type="submit"
+                class="btn btn-danger"
+                (click)="deleteuser(usuario._id)"
+              >
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>

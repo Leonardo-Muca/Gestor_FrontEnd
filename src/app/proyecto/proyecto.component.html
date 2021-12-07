@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
-<div style="display: flex; flex: 100; padding-top: 5%;">
+<div class="fondo">
+    <h1>Proyectos</h1>
+<div style="display: flex; flex: 100; padding-top: 3%;">
     <div style="width: 30%; margin-left: 2%;">
         <form autocomplete="off" (ngSubmit)="altaProyecto(forma)" #forma="ngForm">
             <div class="form-group row mb-2" >
@@ -50,7 +52,7 @@
         </form>
     </div>
     <div style="margin-left: 5%;" class="table-responsive">
-        <table class="table">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
@@ -74,4 +76,5 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>

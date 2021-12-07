@@ -3,3 +3,11 @@ h3{
     font-weight: bold;
     color: #7A8460;
 }
+
+.fondo{
+    height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(180deg, #66c4e8 0, #6ec3eb 8.33%, #76c1ee 16.67%, #7fbff0 25%, #89bdf2 33.33%, #93bbf2 41.67%, #9db9f2 50%, #a7b7f1 58.33%, #b1b4ef 66.67%, #bab2ec 75%, #c3afe8 83.33%, #ccade4 91.67%, #d3abdf 100%);
+  position: relative;
+    
+}
