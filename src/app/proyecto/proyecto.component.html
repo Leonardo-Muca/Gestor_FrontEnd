@@ -71,7 +71,7 @@
                     <td>{{proyecto.dteFechaInicio}}</td>
                     <td>{{proyecto.dteFechaEntrega}}</td>
                     <td><button type="submit" class="btn btn-warning" (click)="seleccionar(proyecto)">Editar</button></td>
-                    <td> <button type="submit" class="btn btn-danger" (click)="deleteProyecto(proyecto._id)">Eliminar</button></td>
+                    <td> <button type="submit" class="btn btn-danger" (click)="deleteProyecto(proyecto._id, proyecto.strNombreProyecto)">Eliminar</button></td>
                 </tr>
             </tbody>
         </table>

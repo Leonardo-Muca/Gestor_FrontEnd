@@ -67,11 +67,11 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
-  deleteuser(id?: number) {
+  deleteuser(id?: number, nombre?:string) {
     this.susuarios.deleteUser(id).then((res: any) => {
       Swal.fire({
         title: 'Success',
-        text: `Usuario eliminado con el id: ${id} con exito`,
+        text: `Usuario ${nombre} eliminado con exito`,
         icon: 'success',
         confirmButtonText: 'Aceptar'
       })

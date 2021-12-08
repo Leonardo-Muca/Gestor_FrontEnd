@@ -33,13 +33,14 @@ export class TareasComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerTareas();
     this.susuarios.recuperarUsuarios();
+    this.sproyectos.recuperarProyectos();
   }
 
   obtenerTareas() {
     this.stareas.recuperarTareas().then((res: any) => {
       this.tareas = res;
       console.log(res);
-      
+
     }).catch(error => {
       Swal.fire({
         title: 'Error al obtener Tareas',
@@ -84,18 +85,18 @@ export class TareasComponent implements OnInit {
           text: error.error.message,
           icon: 'error',
           confirmButtonText: 'Regresar',
-          
-          
+
+
         });
       });
     }
   }
 
-  deleteTarea(id?: number) {
+  deleteTarea(id?: number, nombre?: string) {
     this.stareas.deleteTarea(id).then((res: any) => {
       Swal.fire({
         title: 'Success',
-        text: `Tarea eliminado con el id: ${id} con exito`,
+        text: `Tarea ${nombre} eliminada con exito`,
         icon: 'success',
         confirmButtonText: 'Aceptar'
       })

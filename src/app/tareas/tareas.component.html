@@ -199,7 +199,7 @@
                 {{ usuario.idUsuario.strNombre }}
               </div>
             </td>
-            <td>{{ tarea.idProyecto }}</td>
+            <td>{{ tarea.idProyecto.strNombreProyecto }}</td>
             <td>
               <button
                 type="submit"
@@ -213,7 +213,7 @@
               <button
                 type="submit"
                 class="btn btn-danger"
-                (click)="deleteTarea(tarea._id)"
+                (click)="deleteTarea(tarea._id, tarea.strNombre)"
               >
                 Eliminar
               </button>

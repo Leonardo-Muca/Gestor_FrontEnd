@@ -10,10 +10,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td style="text-align: center">Tareas</td>
+        <tr *ngFor="let proyecto of sproyectos.proyectos">
+          <td style="text-align: center">{{proyecto.strNombreProyecto}}</td>
           <td class="col text-center">
-            <button type="submit" class="btn btn-secondary">Ver</button>
+            <button type="submit" class="btn btn-secondary" (click)="goProyectos()">Ver</button>
           </td>
         </tr>
       </tbody>

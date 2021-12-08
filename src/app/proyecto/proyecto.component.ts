@@ -65,11 +65,11 @@ export class ProyectoComponent implements OnInit {
     }
   }
 
-  deleteProyecto(id?: number) {
+  deleteProyecto(id?: number, nombre?: string) {
     this.sproyectos.deleteProyecto(id).then((res: any) => {
       Swal.fire({
         title: 'Success',
-        text: `Proyecto eliminado con el id: ${id} con exito`,
+        text: `Proyecto ${nombre} eliminado con exito`,
         icon: 'success',
         confirmButtonText: 'Aceptar'
       })
