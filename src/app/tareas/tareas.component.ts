@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { Tarea } from '../interfaces/tarea';
 import { TareaService } from '../service/tareaService/tarea.service';
 import { UsuarioService } from '../service/usuarioService/usuario.service';
+import { ProyectoService } from '../service/proyectoService/proyecto.service';
 
 @Component({
   selector: 'app-tareas',
@@ -27,7 +28,7 @@ export class TareasComponent implements OnInit {
     arrTester: { idUsuario: null },
   };
 
-  constructor(private stareas: TareaService, public susuarios: UsuarioService) { }
+  constructor(private stareas: TareaService, public susuarios: UsuarioService, public sproyectos: ProyectoService) { }
 
   ngOnInit(): void {
     this.obtenerTareas();
