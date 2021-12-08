@@ -33,10 +33,19 @@ proyecto = {
       this.proyectos = res;
     }).catch(error => {
       Swal.fire({
+        toast:true,
         title: 'Error al obtener Proyectos',
         text: error,
         icon: 'error',
-        confirmButtonText: 'Regresar'
+        confirmButtonText: 'Regresar',
+        position: 'top-right',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }        
       })
       console.log('Ha sucedido un error', error);
     });
@@ -49,7 +58,15 @@ proyecto = {
           title: 'Success',
           text: 'Proyecto registrado con exito',
           icon: 'success',
-          confirmButtonText: 'Aceptar'
+          confirmButtonText: 'Aceptar',
+          position: 'top-right',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
         })
         forma.reset();
         this.ngOnInit();
@@ -58,7 +75,15 @@ proyecto = {
           title: 'Error al registrar el proyecto',
           text: error.error.message,
           icon: 'error',
-          confirmButtonText: 'Regresar'
+          confirmButtonText: 'Regresar',
+          position: 'top-right',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
         })
       });
     } else {
@@ -67,7 +92,15 @@ proyecto = {
           title: 'Success',
           text: `Proyecto modificado con el id: ${this.proyecto._id} con exito`,
           icon: 'success',
-          confirmButtonText: 'Aceptar'
+          confirmButtonText: 'Aceptar',
+          position: 'top-right',
+        timer: 3000,
+        showConfirmButton: true,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
         })
         this.ngOnInit();
       }).catch(error => {
@@ -75,7 +108,14 @@ proyecto = {
           title: 'Error al modificar el proyecto',
           text: error.error.message,
           icon: 'error',
-          confirmButtonText: 'Regresar'
+          confirmButtonText: 'Regresar',
+          position: 'top-right',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
         });
       });
     }
@@ -96,7 +136,15 @@ proyecto = {
         title: 'Error al eliminar el proyecto',
         text: error.error.message,
         icon: 'error',
-        confirmButtonText: 'Regresar'
+        confirmButtonText: 'Regresar',
+        background:"#ffdfd4",
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        
+        didOpen: (toast) => {
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
       })
     });
   }

@@ -28,10 +28,20 @@ export class HomeComponent implements OnInit {
       
     }).catch(error => {
       Swal.fire({
+        toast:true,
         title: 'Error al obtener Tareas',
         text: error,
         icon: 'error',
-        confirmButtonText: 'Regresar'
+        confirmButtonText: 'Regresar',
+        position: 'top-right',
+        background:"#ffdfd4",
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
       })
     });
   };
@@ -43,10 +53,20 @@ export class HomeComponent implements OnInit {
       
     }).catch(error => {
       Swal.fire({
+        toast:true,
         title: 'Error al obtener Tareas',
         text: error,
         icon: 'error',
-        confirmButtonText: 'Regresar'
+        position: 'top-right',
+        background:"#ffdfd4",
+        confirmButtonText: 'Regresar',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
       })
     });
   };

@@ -32,10 +32,19 @@ export class UsuarioComponent implements OnInit {
     if (this.usuario._id == undefined) {
       this.susuarios.altaUser(this.usuario).then((res: any) => {
         Swal.fire({
+          toast:true,
           title: 'Success',
           text: 'Usuario registrado con exito',
           icon: 'success',
-          confirmButtonText: 'Aceptar'
+          confirmButtonText: 'Aceptar',
+          position: 'top-right',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
         })
         forma.reset();
         this.ngOnInit();
@@ -44,24 +53,50 @@ export class UsuarioComponent implements OnInit {
           title: 'Error al registrar usuario',
           text: error.error.message,
           icon: 'error',
-          confirmButtonText: 'Regresar'
+          confirmButtonText: 'Regresar',
+          position: 'top-right',
+          background:"#ffdfd4",
+          timer: 3000,
+          showConfirmButton: false,
+          timerProgressBar: true,
+          
+          didOpen: (toast) => {
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
         })
       });
     } else {
        this.susuarios.putUser(this.usuario._id, this.usuario).then((res: any) => {
         Swal.fire({
+          toast:true,
           title: 'Success',
           text: `Usuario modificado con el id: ${this.usuario._id} con exito`,
           icon: 'success',
-          confirmButtonText: 'Aceptar'
+          confirmButtonText: 'Aceptar',
+          position: 'top-right',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
         })
         this.ngOnInit();
       }).catch(error => {
         Swal.fire({
+          toast:true,
           title: 'Error al modificar usuario',
           text: error.error.message,
           icon: 'error',
-          confirmButtonText: 'Regresar'
+          confirmButtonText: 'Regresar',
+          background:"#ffdfd4",
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
         });
       });
     }
@@ -70,18 +105,30 @@ export class UsuarioComponent implements OnInit {
   deleteuser(id?: number) {
     this.susuarios.deleteUser(id).then((res: any) => {
       Swal.fire({
+        toast:true,
         title: 'Success',
         text: `Usuario eliminado con el id: ${id} con exito`,
         icon: 'success',
-        confirmButtonText: 'Aceptar'
+        confirmButtonText: 'Aceptar',
+        position: 'top-right',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
       })
       this.ngOnInit();
     }).catch(error => {
       Swal.fire({
+        toast:true,
         title: 'Error al eliminar usuario',
         text: error.error.message,
         icon: 'error',
-        confirmButtonText: 'Regresar'
+        confirmButtonText: 'Regresar',
+        background:"#ffdfd4",
+        
       })
     });
   }

@@ -20,10 +20,18 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.email === 'leonardo' && this.password === '12345') {
       Swal.fire({
+        toast: true,
         title: 'Credenciales correctas',
         text: `Welcome ${this.email}`,
         icon: 'success',
-        confirmButtonText: 'Aceptar'
+        position: 'top-right',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
       })
       this.router.navigate(['/home'])
     } else {
@@ -31,7 +39,15 @@ export class LoginComponent implements OnInit {
         title: 'Credenciales incorrectas',
         text: 'Introduce credenciales registradas',
         icon: 'error',
-        confirmButtonText: 'Regresar'
+        confirmButtonText: 'Regresar',
+        background:"#ffdfd4",
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        
+        didOpen: (toast) => {
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
       })
     }
   }
