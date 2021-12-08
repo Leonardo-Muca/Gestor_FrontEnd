@@ -15,8 +15,8 @@
             <div class="form-floating mb-2" >
                 <select class="form-select" id="Status" [(ngModel)]="proyecto.strStatus"
                 name="strStatus" #strStatus="ngModel">
-                    <option value="En progreso">En progreso</option>
-                    <option value="Terminado">Terminado</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Finalizada">Finalizada</option>
                     <option value="Rechazado">Rechazado</option>
                   </select>
                   <label for="inputStatus">Status</label>
@@ -64,14 +64,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let proyecto of proyectos">
+                <tr *ngFor="let proyecto of sproyectos.proyectos">
                     <td>{{proyecto.strNombreProyecto}}</td>
                     <td>{{proyecto.strStatus}}</td>
                     <td>{{proyecto.strDescripcion}}</td>
                     <td>{{proyecto.dteFechaInicio}}</td>
                     <td>{{proyecto.dteFechaEntrega}}</td>
                     <td><button type="submit" class="btn btn-warning" (click)="seleccionar(proyecto)">Editar</button></td>
-                    <td> <button type="submit" class="btn btn-danger" (click)="deleteProyecto(proyecto._id)">Eliminar</button></td>
+                    <td> <button type="submit" class="btn btn-danger" (click)="deleteProyecto(proyecto._id, proyecto.strNombreProyecto)">Eliminar</button></td>
                 </tr>
             </tbody>
         </table>

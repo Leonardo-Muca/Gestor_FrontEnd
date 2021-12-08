@@ -1,6 +1,7 @@
+import { Proyecto } from '../interfaces/proyecto';
 export interface Tarea {
     _id?: number;
-    idProyecto: number;
+    idProyecto: Proyecto;
     strNombre: string;
     strStatus: string;
     strDescripcion: string;

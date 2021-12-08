@@ -27,8 +27,8 @@
               name="strStatus"
               #strStatus="ngModel"
             >
-              <option value="En progreso">En progreso</option>
-              <option value="Terminado">Terminado</option>
+              <option value="Pendiente">Pendiente</option>
+              <option value="Finalizada">Finalizada</option>
               <option value="Rechazado">Rechazado</option>
             </select>
             <label for="inputStatus">Status</label>
@@ -134,6 +134,26 @@
             <label for="inputTester">ID Tester</label>
           </div>
         </div>
+        <div class="col-md-15">
+          <div class="form-floating mb-2">
+            <select
+              name="_id"
+              [(ngModel)]="tarea.idProyecto"
+              class="form-select form-select-lg mb-3"
+              aria-label=".form-select-lg example"
+              name="idProyecto"
+              #idProyecto="ngModel"
+            >
+              <option
+                *ngFor="let proyecto of sproyectos.proyectos"
+                [ngValue]="proyecto._id"
+              >
+                {{ proyecto.strNombreProyecto }}
+              </option>
+            </select>
+            <label for="inputTester">Proyecto al que se liga la tarea</label>
+          </div>
+        </div>
         <div class="form-group row mb-2">
           <div class="d-grid gap-2" style="padding-top: 2%">
             <button type="submit" class="btn btn-primary">Enviar</button>
@@ -153,6 +173,7 @@
             <th scope="col">Administrador</th>
             <th scope="col">Desarrollador</th>
             <th scope="col">Tester</th>
+            <th scope="col">Proyecto</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -178,6 +199,7 @@
                 {{ usuario.idUsuario.strNombre }}
               </div>
             </td>
+            <td>{{ tarea.idProyecto.strNombreProyecto }}</td>
             <td>
               <button
                 type="submit"
@@ -191,7 +213,7 @@
               <button
                 type="submit"
                 class="btn btn-danger"
-                (click)="deleteTarea(tarea._id)"
+                (click)="deleteTarea(tarea._id, tarea.strNombre)"
               >
                 Eliminar
               </button>

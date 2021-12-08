@@ -11,23 +11,22 @@ import { ProyectoService } from '../service/proyectoService/proyecto.service';
 })
 export class ProyectoComponent implements OnInit {
 
-proyectos: Proyecto[] = [];
+  proyecto = {
+    _id: null,
+    strNombreProyecto: null,
+    strStatus: null,
+    strDescripcion: null,
+    dteFechaInicio: null,
+    dteFechaEntrega: null,
+  };
 
-proyecto = {
-  _id: null,
-  strNombreProyecto: null,
-  strStatus: null,
-  strDescripcion: null,
-  dteFechaInicio: null,
-  dteFechaEntrega: null,
-};
-
-  constructor(private sproyectos: ProyectoService) { }
+  constructor(public sproyectos: ProyectoService) { }
 
   ngOnInit(): void {
-    this.obtenerProyectos();
+    this.sproyectos.recuperarProyectos();
   }
 
+<<<<<<< HEAD
   obtenerProyectos() {
     this.sproyectos.recuperarProyectos().then((res: any) => {
       this.proyectos = res;
@@ -51,6 +50,8 @@ proyecto = {
     });
   };
 
+=======
+>>>>>>> b736b60f5edf336d97846fbd16a0f240cb6412dd
   altaProyecto(forma: NgForm) {
     if (this.proyecto._id == undefined) {
       this.sproyectos.altaProyecto(this.proyecto).then((res: any) => {
@@ -87,7 +88,7 @@ proyecto = {
         })
       });
     } else {
-       this.sproyectos.putProyecto(this.proyecto._id, this.proyecto).then((res: any) => {
+      this.sproyectos.putProyecto(this.proyecto._id, this.proyecto).then((res: any) => {
         Swal.fire({
           title: 'Success',
           text: `Proyecto modificado con el id: ${this.proyecto._id} con exito`,
@@ -121,16 +122,15 @@ proyecto = {
     }
   }
 
-  deleteProyecto(id?: number) {
+  deleteProyecto(id?: number, nombre?: string) {
     this.sproyectos.deleteProyecto(id).then((res: any) => {
       Swal.fire({
         title: 'Success',
-        text: `Proyecto eliminado con el id: ${id} con exito`,
+        text: `Proyecto ${nombre} eliminado con exito`,
         icon: 'success',
         confirmButtonText: 'Aceptar'
       })
       this.ngOnInit();
-      this.obtenerProyectos();
     }).catch(error => {
       Swal.fire({
         title: 'Error al eliminar el proyecto',
