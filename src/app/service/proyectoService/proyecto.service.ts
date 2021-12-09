@@ -17,10 +17,19 @@ export class ProyectoService {
       this.proyectos = res;
     }, error => {
       Swal.fire({
-        title: 'Error al obtener los proyectos',
+        toast:true,
+        title: 'Error al obtener Proyectos',
         text: error,
         icon: 'error',
-        confirmButtonText: 'Regresar'
+        confirmButtonText: 'Regresar',
+        position: 'top-right',
+        timer: 3000,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }        
       })
       console.log('Ha sucedido un error', error);
     });

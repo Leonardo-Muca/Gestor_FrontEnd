@@ -26,32 +26,6 @@ export class ProyectoComponent implements OnInit {
     this.sproyectos.recuperarProyectos();
   }
 
-<<<<<<< HEAD
-  obtenerProyectos() {
-    this.sproyectos.recuperarProyectos().then((res: any) => {
-      this.proyectos = res;
-    }).catch(error => {
-      Swal.fire({
-        toast:true,
-        title: 'Error al obtener Proyectos',
-        text: error,
-        icon: 'error',
-        confirmButtonText: 'Regresar',
-        position: 'top-right',
-        timer: 3000,
-        showConfirmButton: false,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }        
-      })
-      console.log('Ha sucedido un error', error);
-    });
-  };
-
-=======
->>>>>>> b736b60f5edf336d97846fbd16a0f240cb6412dd
   altaProyecto(forma: NgForm) {
     if (this.proyecto._id == undefined) {
       this.sproyectos.altaProyecto(this.proyecto).then((res: any) => {

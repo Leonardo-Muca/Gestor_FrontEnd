@@ -27,14 +27,10 @@ export class TareasComponent implements OnInit {
     arrTester: { idUsuario: null },
   };
 
-<<<<<<< HEAD
   constructor(
-    private stareas: TareaService,
-    public susuarios: UsuarioService
-  ) {}
-=======
-  constructor(private stareas: TareaService, public susuarios: UsuarioService, public sproyectos: ProyectoService) { }
->>>>>>> b736b60f5edf336d97846fbd16a0f240cb6412dd
+    private stareas: TareaService, 
+    public susuarios: UsuarioService, 
+    public sproyectos: ProyectoService) { }
 
   ngOnInit(): void {
     this.obtenerTareas();
@@ -43,39 +39,28 @@ export class TareasComponent implements OnInit {
   }
 
   obtenerTareas() {
-<<<<<<< HEAD
     this.stareas
       .recuperarTareas()
       .then((res: any) => {
         this.tareas = res;
         console.log(res);
-=======
-    this.stareas.recuperarTareas().then((res: any) => {
-      this.tareas = res;
-      console.log(res);
-
-    }).catch(error => {
-      Swal.fire({
-        title: 'Error al obtener Tareas',
-        text: error,
-        icon: 'error',
-        confirmButtonText: 'Regresar'
->>>>>>> b736b60f5edf336d97846fbd16a0f240cb6412dd
       })
       .catch((error) => {
         Swal.fire({
-          title: 'Error al obtener Tareas',
+          toast:true,
+          title: 'Error al obtener las tareas',
           text: error,
           icon: 'error',
           confirmButtonText: 'Regresar',
-          background:"#ffdfd4",
+          position: 'top-right',
           timer: 3000,
           showConfirmButton: false,
           timerProgressBar: true,
           didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        });
+          }        
+        })
       });
   }
 
@@ -101,7 +86,6 @@ export class TareasComponent implements OnInit {
           forma.reset();
           this.ngOnInit();
         })
-<<<<<<< HEAD
         .catch((error) => {
           Swal.fire({
             title: 'Error al registrar Tarea',
@@ -153,40 +137,10 @@ export class TareasComponent implements OnInit {
           toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
           });
-=======
-        forma.reset();
-        this.ngOnInit();
-      }).catch(error => {
-        Swal.fire({
-          title: 'Error al registrar Tarea',
-          text: error.error.message,
-          icon: 'error',
-          confirmButtonText: 'Regresar'
-        })
-      });
-    } else {
-      this.stareas.putTarea(this.tarea._id, this.tarea).then((res: any) => {
-        Swal.fire({
-          title: 'Success',
-          text: `Tarea modificado con el id: ${this.tarea._id} con exito`,
-          icon: 'success',
-          confirmButtonText: 'Aceptar'
-        })
-        this.ngOnInit();
-      }).catch(error => {
-        Swal.fire({
-          title: 'Error al modificar Tarea',
-          text: error.error.message,
-          icon: 'error',
-          confirmButtonText: 'Regresar',
-
-
->>>>>>> b736b60f5edf336d97846fbd16a0f240cb6412dd
         });
     }
   }
 
-<<<<<<< HEAD
   deleteTarea(id?: number) {
     this.stareas
       .deleteTarea(id)
@@ -207,15 +161,6 @@ export class TareasComponent implements OnInit {
         });
         this.ngOnInit();
         this.obtenerTareas();
-=======
-  deleteTarea(id?: number, nombre?: string) {
-    this.stareas.deleteTarea(id).then((res: any) => {
-      Swal.fire({
-        title: 'Success',
-        text: `Tarea ${nombre} eliminada con exito`,
-        icon: 'success',
-        confirmButtonText: 'Aceptar'
->>>>>>> b736b60f5edf336d97846fbd16a0f240cb6412dd
       })
       .catch((error) => {
         Swal.fire({

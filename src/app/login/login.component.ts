@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.email === 'leonardo' && this.password === '12345') {
+    if (this.email === '190041@utags.edu.mx' && this.password === '12345') {
       Swal.fire({
         toast: true,
         title: 'Credenciales correctas',
