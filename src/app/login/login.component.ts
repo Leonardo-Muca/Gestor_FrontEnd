@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   usuario = {
     email: null,
     password: null,
-    tipo: null,
   }
   tipo: any;
   id: any
