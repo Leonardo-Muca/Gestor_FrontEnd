@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { LoginService } from '../service/login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,24 +12,40 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   public form!: FormGroup;
-  email: string = '';
-  password: string = '';
+  usuario = {
+    email: null,
+    password: null,
+    tipo: null,
+  }
+  tipo: any;
+  id: any
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private lservice: LoginService) { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      email: ['', [Validators.required,]],
-      password : ['', [Validators.required]],
-    });
+    // this.form = this.formBuilder.group({
+    //   email: ['', [Validators.required,]],
+    //   password: ['', [Validators.required]],
+    // });
   }
 
-  login() {
-    if (this.email === 'usuario' && this.password === '12345') {
+  login(usuario: any) {
+    let memoria = 0;
+    console.log(usuario)
+    return this.lservice.login(usuario).then((res: any) => {
+      console.log('token:', res.token);
+      localStorage.setItem('token', res.token);
+      this.tipo = res.usrDB.tipo;
+      this.id = res.usrDB._id;
+
+      localStorage.setItem('tipoDeUsuario', this.tipo);
+
+      console.log(this.tipo);
+      this.router.navigate(['/home'])
       Swal.fire({
         toast: true,
         title: 'Credenciales correctas',
-        text: `Welcome ${this.email}`,
+        text: `Welcome ${this.usuario.email}`,
         icon: 'success',
         position: 'top-right',
         timer: 3000,
@@ -39,15 +56,14 @@ export class LoginComponent implements OnInit {
           toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
       })
-      localStorage.setItem('tipoDeUsuario', 'usuario');
-      this.router.navigate(['/home'])
-    }
-    if (this.email === 'administrador' && this.password === '12345') {
+    }).catch(err => {
+      console.log(err.error);
       Swal.fire({
-        toast: true,
-        title: 'Credenciales correctas',
-        text: `Welcome ${this.email}`,
-        icon: 'success',
+        toast:true,
+        title: 'Email o contraseña incorrecta',
+        text: err.error.msg,
+        icon: 'error',
+        confirmButtonText: 'Regresar',
         position: 'top-right',
         timer: 3000,
         showConfirmButton: false,
@@ -55,11 +71,13 @@ export class LoginComponent implements OnInit {
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
           toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+        }        
       })
-      localStorage.setItem('tipoDeUsuario', 'administrador');
-      this.router.navigate(['/home'])
-    }
+      memoria++;
+      if (memoria == 3) {
+        alert('Usuario bloqueado, intente dentro de 30 segundos');
+      }
+    })
   }
 
   register() {
