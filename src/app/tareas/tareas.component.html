@@ -88,7 +88,7 @@
                 *ngFor="let usuario of susuarios.usuarios"
                 [ngValue]="usuario._id"
               >
-                {{ usuario.strNombre }}
+                {{ usuario.nombre }}
               </option>
             </select>
             <label for="inputDeveloper">Administrador</label>
@@ -108,7 +108,7 @@
                 *ngFor="let usuario of susuarios.usuarios"
                 [ngValue]="usuario._id"
               >
-                {{ usuario.strNombre }}
+                {{ usuario.nombre }}
               </option>
             </select>
             <label for="inputDeveloper">ID Developer</label>
@@ -128,7 +128,7 @@
                 *ngFor="let usuario of susuarios.usuarios"
                 [ngValue]="usuario._id"
               >
-                {{ usuario.strNombre }}
+                {{ usuario.nombre }}
               </option>
             </select>
             <label for="inputTester">ID Tester</label>
@@ -186,17 +186,17 @@
             <td>{{ tarea.dteFechaEntrega }}</td>
             <td>
               <div *ngFor="let usuario of tarea.arrAdministrador">
-                {{ usuario.idUsuario.strNombre }}
+                {{ usuario.idUsuario.nombre }}
               </div>
             </td>
             <td>
               <div *ngFor="let usuario of tarea.arrDesarrollador">
-                {{ usuario.idUsuario.strNombre }}
+                {{ usuario.idUsuario.nombre }}
               </div>
             </td>
             <td>
               <div *ngFor="let usuario of tarea.arrTester">
-                {{ usuario.idUsuario.strNombre }}
+                {{ usuario.idUsuario.nombre }}
               </div>
             </td>
             <td>{{ tarea.idProyecto.strNombreProyecto }}</td>

@@ -9,17 +9,19 @@ import { Usuario } from 'src/app/interfaces/usuario';
 })
 export class UsuarioService {
   usuarios: Usuario[] = [];
-  url = environment.url + '/usuarios';
+  url = environment.url + '/usuario';
 
   constructor(private http: HttpClient) { }
 
   recuperarUsuarios() {
     return this.http.get(this.url).subscribe((res: any)=>{
-      this.usuarios = res;
+      this.usuarios = res.usuarios;
+      console.log('>>>>>',res);
+      
     }, error => {
       Swal.fire({
         title: 'Error al obtener usuarios',
-        text: error,
+        text: error.msg,
         icon: 'error',
         confirmButtonText: 'Regresar'
       })

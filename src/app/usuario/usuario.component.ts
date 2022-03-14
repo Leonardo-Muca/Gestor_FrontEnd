@@ -15,11 +15,10 @@ export class UsuarioComponent implements OnInit {
 
   usuario = {
     _id: null,
-    strNombre: null,
-    strApellidos: null,
-    strCorreo: null,
-    strPassword: null,
-    strTipoUsuario: null,
+    email: null,
+    nombre: null,
+    password: null,
+    tipo: null,
   };
 
   constructor(public susuarios: UsuarioService) { }
