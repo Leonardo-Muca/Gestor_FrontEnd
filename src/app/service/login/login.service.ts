@@ -9,7 +9,7 @@ export class LoginService {
   url = environment.url + '/login';
   constructor(private http: HttpClient) { }
 
-  login(usuario: any){
-    return this.http.post(this.url,usuario).toPromise();
+  login(usuario: any) {
+    return this.http.post(this.url, usuario).toPromise();
   }
 }

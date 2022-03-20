@@ -11,6 +11,10 @@ import { ProyectoService } from '../service/proyectoService/proyecto.service';
 })
 export class ProyectoComponent implements OnInit {
 
+  tipoDeUsuario: string | null;
+
+  isDisable: boolean = false
+
   proyecto = {
     _id: null,
     strNombreProyecto: null,
@@ -20,7 +24,10 @@ export class ProyectoComponent implements OnInit {
     dteFechaEntrega: null,
   };
 
-  constructor(public sproyectos: ProyectoService) { }
+  constructor(public sproyectos: ProyectoService) {
+    this.tipoDeUsuario = localStorage.getItem('tipoDeUsuario');
+    this.isDisable = this.tipoDeUsuario == 'Administrador' ? false : true;
+  }
 
   ngOnInit(): void {
     this.sproyectos.recuperarProyectos();
@@ -35,13 +42,13 @@ export class ProyectoComponent implements OnInit {
           icon: 'success',
           confirmButtonText: 'Aceptar',
           position: 'top-right',
-        timer: 3000,
-        showConfirmButton: false,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+          timer: 3000,
+          showConfirmButton: false,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
         })
         forma.reset();
         this.ngOnInit();
@@ -52,13 +59,13 @@ export class ProyectoComponent implements OnInit {
           icon: 'error',
           confirmButtonText: 'Regresar',
           position: 'top-right',
-        timer: 3000,
-        showConfirmButton: false,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+          timer: 3000,
+          showConfirmButton: false,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
         })
       });
     } else {
@@ -69,13 +76,13 @@ export class ProyectoComponent implements OnInit {
           icon: 'success',
           confirmButtonText: 'Aceptar',
           position: 'top-right',
-        timer: 3000,
-        showConfirmButton: true,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+          timer: 3000,
+          showConfirmButton: true,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
         })
         this.ngOnInit();
       }).catch(error => {
@@ -85,12 +92,12 @@ export class ProyectoComponent implements OnInit {
           icon: 'error',
           confirmButtonText: 'Regresar',
           position: 'top-right',
-        timer: 3000,
-        showConfirmButton: false,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+          timer: 3000,
+          showConfirmButton: false,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
         });
       });
     }
@@ -111,11 +118,11 @@ export class ProyectoComponent implements OnInit {
         text: error.error.message,
         icon: 'error',
         confirmButtonText: 'Regresar',
-        background:"#ffdfd4",
+        background: "#ffdfd4",
         timer: 3000,
         showConfirmButton: false,
         timerProgressBar: true,
-        
+
         didOpen: (toast) => {
           toast.addEventListener('mouseleave', Swal.resumeTimer)
         }

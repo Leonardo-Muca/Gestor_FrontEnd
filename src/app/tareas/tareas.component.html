@@ -6,27 +6,15 @@
       <form autocomplete="off" (ngSubmit)="altaTarea(forma)" #forma="ngForm" class="form-group row card-block">
         <div class="col-md-3">
           <div class="form-floating mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="inputEmail3"
-              [(ngModel)]="tarea.strNombre"
-              name="strNombre"
-              #strNombre="ngModel"
-              placeholder="Nombre"
-            />
+            <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="tarea.strNombre" name="strNombre"
+              #strNombre="ngModel" placeholder="Nombre" />
             <label for="inputEmail3" style="margin-left: 2%">Nombre</label>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-floating mb-2">
-            <select
-              class="form-select"
-              id="inputGroupSelect01"
-              [(ngModel)]="tarea.strStatus"
-              name="strStatus"
-              #strStatus="ngModel"
-            >
+            <select class="form-select" id="inputGroupSelect01" [(ngModel)]="tarea.strStatus" name="strStatus"
+              #strStatus="ngModel">
               <option value="Pendiente">Pendiente</option>
               <option value="Finalizada">Finalizada</option>
               <option value="Rechazado">Rechazado</option>
@@ -36,58 +24,30 @@
         </div>
         <div class="col-md-3">
           <div class="form-floating mb-2">
-            <input
-              type="text"
-              class="form-control"
-              id="inputEmail3"
-              [(ngModel)]="tarea.strDescripcion"
-              name="strDescripcion"
-              #strDescripcion="ngModel"
-              placeholder="Descripción"
-            />
+            <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="tarea.strDescripcion"
+              name="strDescripcion" #strDescripcion="ngModel" placeholder="Descripción" />
             <label for="inputEmail3" style="margin-left: 2%">Descripción</label>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-floating mb-2">
-            <input
-              type="date"
-              class="form-control"
-              id="dteFechaInicio"
-              [(ngModel)]="tarea.dteFechaInicio"
-              name="dteFechaInicio"
-              #dteFechaInicio="ngModel"
-            />
+            <input type="date" class="form-control" id="dteFechaInicio" [(ngModel)]="tarea.dteFechaInicio"
+              name="dteFechaInicio" #dteFechaInicio="ngModel" />
             <label for="inputFechaI">Fecha inicio</label>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-floating mb-2">
-            <input
-              type="date"
-              class="form-control"
-              id="dteFechaEntrega"
-              [(ngModel)]="tarea.dteFechaEntrega"
-              name="dteFechaEntrega"
-              #dteFechaEntrega="ngModel"
-            />
+            <input type="date" class="form-control" id="dteFechaEntrega" [(ngModel)]="tarea.dteFechaEntrega"
+              name="dteFechaEntrega" #dteFechaEntrega="ngModel" />
             <label for="inputFechaE">Fecha entrega</label>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-floating mb-2">
-            <select
-              name="_id"
-              [(ngModel)]="tarea.arrAdministrador.idUsuario"
-              class="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              name="arrAdministrador"
-              #arrAdministrador="ngModel"
-            >
-              <option
-                *ngFor="let usuario of susuarios.usuarios"
-                [ngValue]="usuario._id"
-              >
+            <select name="_id" [(ngModel)]="tarea.arrAdministrador.idUsuario" class="form-select form-select-lg mb-3"
+              aria-label=".form-select-lg example" name="arrAdministrador" #arrAdministrador="ngModel">
+              <option *ngFor="let usuario of susuarios.usuarios" [ngValue]="usuario._id">
                 {{ usuario.nombre }}
               </option>
             </select>
@@ -96,18 +56,9 @@
         </div>
         <div class="col-md-3">
           <div class="form-floating mb-2">
-            <select
-              name="_id"
-              [(ngModel)]="tarea.arrDesarrollador.idUsuario"
-              class="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              name="arrDesarrollador"
-              #arrDesarrollador="ngModel"
-            >
-              <option
-                *ngFor="let usuario of susuarios.usuarios"
-                [ngValue]="usuario._id"
-              >
+            <select name="_id" [(ngModel)]="tarea.arrDesarrollador.idUsuario" class="form-select form-select-lg mb-3"
+              aria-label=".form-select-lg example" name="arrDesarrollador" #arrDesarrollador="ngModel">
+              <option *ngFor="let usuario of susuarios.usuarios" [ngValue]="usuario._id">
                 {{ usuario.nombre }}
               </option>
             </select>
@@ -116,18 +67,9 @@
         </div>
         <div class="col-md-3">
           <div class="form-floating mb-2">
-            <select
-              name="_id"
-              [(ngModel)]="tarea.arrTester.idUsuario"
-              class="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              name="arrTester"
-              #arrTester="ngModel"
-            >
-              <option
-                *ngFor="let usuario of susuarios.usuarios"
-                [ngValue]="usuario._id"
-              >
+            <select name="_id" [(ngModel)]="tarea.arrTester.idUsuario" class="form-select form-select-lg mb-3"
+              aria-label=".form-select-lg example" name="arrTester" #arrTester="ngModel">
+              <option *ngFor="let usuario of susuarios.usuarios" [ngValue]="usuario._id">
                 {{ usuario.nombre }}
               </option>
             </select>
@@ -136,18 +78,9 @@
         </div>
         <div class="col-md-15">
           <div class="form-floating mb-2">
-            <select
-              name="_id"
-              [(ngModel)]="tarea.idProyecto"
-              class="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              name="idProyecto"
-              #idProyecto="ngModel"
-            >
-              <option
-                *ngFor="let proyecto of sproyectos.proyectos"
-                [ngValue]="proyecto._id"
-              >
+            <select name="_id" [(ngModel)]="tarea.idProyecto" class="form-select form-select-lg mb-3"
+              aria-label=".form-select-lg example" name="idProyecto" #idProyecto="ngModel">
+              <option *ngFor="let proyecto of sproyectos.proyectos" [ngValue]="proyecto._id">
                 {{ proyecto.strNombreProyecto }}
               </option>
             </select>
@@ -156,7 +89,7 @@
         </div>
         <div class="form-group row mb-2">
           <div class="d-grid gap-2" style="padding-top: 2%">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" [disabled]="isDisable" class="btn btn-primary">Enviar</button>
           </div>
         </div>
       </form>
@@ -201,20 +134,12 @@
             </td>
             <td>{{ tarea.idProyecto.strNombreProyecto }}</td>
             <td>
-              <button
-                type="submit"
-                class="btn btn-warning"
-                (click)="seleccionar(tarea)"
-              >
+              <button type="submit" class="btn btn-warning" [disabled]="isDisable" (click)="seleccionar(tarea)">
                 Editar
               </button>
             </td>
             <td>
-              <button
-                type="submit"
-                class="btn btn-danger"
-                (click)="deleteTarea(tarea._id)"
-              >
+              <button type="submit" class="btn btn-danger" [disabled]="isDisable" (click)="deleteTarea(tarea._id)">
                 Eliminar
               </button>
             </td>

@@ -14,6 +14,10 @@ import { ProyectoService } from '../service/proyectoService/proyecto.service';
 export class TareasComponent implements OnInit {
   tareas: Tarea[] = [];
 
+  tipoDeUsuario: string | null;
+
+  isDisable: boolean = false
+
   tarea = {
     _id: null,
     idProyecto: null,
@@ -28,9 +32,14 @@ export class TareasComponent implements OnInit {
   };
 
   constructor(
-    private stareas: TareaService, 
-    public susuarios: UsuarioService, 
-    public sproyectos: ProyectoService) { }
+    private stareas: TareaService,
+    public susuarios: UsuarioService,
+    public sproyectos: ProyectoService) {
+    this.tipoDeUsuario = localStorage.getItem('tipoDeUsuario');
+    this.isDisable = this.tipoDeUsuario == 'Administrador' ? false : true;
+    console.log(this.isDisable);
+
+  }
 
   ngOnInit(): void {
     this.obtenerTareas();
@@ -47,7 +56,7 @@ export class TareasComponent implements OnInit {
       })
       .catch((error) => {
         Swal.fire({
-          toast:true,
+          toast: true,
           title: 'Error al obtener las tareas',
           text: error,
           icon: 'error',
@@ -59,7 +68,7 @@ export class TareasComponent implements OnInit {
           didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }        
+          }
         })
       });
   }
@@ -92,14 +101,14 @@ export class TareasComponent implements OnInit {
             text: error.error.message,
             icon: 'error',
             confirmButtonText: 'Regresar',
-            background:"#ffdfd4",
-        timer: 3000,
-        showConfirmButton: false,
-        timerProgressBar: true,
-        
-        didOpen: (toast) => {
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+            background: "#ffdfd4",
+            timer: 3000,
+            showConfirmButton: false,
+            timerProgressBar: true,
+
+            didOpen: (toast) => {
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
           });
         });
     } else {
@@ -128,14 +137,14 @@ export class TareasComponent implements OnInit {
             text: error.error.message,
             icon: 'error',
             confirmButtonText: 'Regresar',
-            background:"#ffdfd4",
-        timer: 3000,
-        showConfirmButton: false,
-        timerProgressBar: true,
-        
-        didOpen: (toast) => {
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+            background: "#ffdfd4",
+            timer: 3000,
+            showConfirmButton: false,
+            timerProgressBar: true,
+
+            didOpen: (toast) => {
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
           });
         });
     }
@@ -164,20 +173,20 @@ export class TareasComponent implements OnInit {
       })
       .catch((error) => {
         Swal.fire({
-          toast:true,
+          toast: true,
           title: 'Error al eliminar Tarea',
           text: error.error.message,
           icon: 'error',
           confirmButtonText: 'Regresar',
           position: 'top-right',
           timer: 3000,
-          background:"#ffdfd4",
-        showConfirmButton: false,
-        timerProgressBar: true,
-        
-        didOpen: (toast) => {
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+          background: "#ffdfd4",
+          showConfirmButton: false,
+          timerProgressBar: true,
+
+          didOpen: (toast) => {
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
         });
       });
   }

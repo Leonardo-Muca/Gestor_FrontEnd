@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
     }).catch(err => {
       console.log(err.error);
       Swal.fire({
-        toast:true,
+        toast: true,
         title: 'Email o contraseña incorrecta',
         text: err.error.msg,
         icon: 'error',
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
           toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }        
+        }
       })
       memoria++;
       if (memoria == 3) {
