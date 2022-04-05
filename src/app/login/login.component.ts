@@ -18,8 +18,15 @@ export class LoginComponent implements OnInit {
   }
   tipo: any;
   id: any
+  logger: any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private lservice: LoginService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private lservice: LoginService) {
+    this.logger.debug("Debug message");
+    this.logger.info("Info message");
+    this.logger.log("Default log message");
+    this.logger.warn("Warning message");
+    this.logger.error("Error message");
+   }
 
   ngOnInit(): void {
     // this.form = this.formBuilder.group({

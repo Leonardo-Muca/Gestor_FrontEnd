@@ -18,6 +18,7 @@ import { TareasComponent } from './tareas/tareas.component';
 import { PasswordPipe } from './pipes/password.pipe';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 
 
@@ -55,7 +56,13 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    LoggerModule.forRoot({
+      serverLoggingUrl: '/api/logs',
+      level: NgxLoggerLevel.TRACE,
+      serverLogLevel: NgxLoggerLevel.ERROR,
+      disableConsoleLogging: false
+ })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,6 +19,7 @@ export class UsuarioComponent implements OnInit {
     nombre: null,
     password: null,
     tipo: null,
+    sueldo:null
   };
 
   constructor(public susuarios: UsuarioService) { }
